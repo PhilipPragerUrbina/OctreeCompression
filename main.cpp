@@ -29,8 +29,8 @@ int main(int argc, char* args[])
    //compress and apply to video
    //todo separate encode and decode, maybe create a file format
     for(int i =0; i <  video.getFrameCount(); i+= increments){
-        if(i + increments >= video.getFrameCount()){
-            increments = i + increments - video.getFrameCount()+2;
+        if((i + increments) > video.getFrameCount()){
+            increments = video.getFrameCount() - i;
         }
 
         Compressor compressor(&video, i, i+increments);
