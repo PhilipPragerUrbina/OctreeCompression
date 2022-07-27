@@ -14,6 +14,8 @@ int main(int argc, char* args[])
     //increments in which to process video(how many frames at a time)
     int increments = 30;
     if (argc > 3)  increments = std::stoi(args[3]);
+
+
     //max color distance before split from 0-255. Smaller for higher quality.
     int threshold = 25;
     if (argc > 4)  threshold = std::stoi(args[4]);
@@ -27,6 +29,10 @@ int main(int argc, char* args[])
    //compress and apply to video
    //todo separate encode and decode, maybe create a file format
     for(int i =0; i <  video.getFrameCount(); i+= increments){
+        if(i + increments >= video.getFrameCount()){
+            increments = i + increments - video.getFrameCount()+2;
+        }
+
         Compressor compressor(&video, i, i+increments);
         compressor.run(limit,threshold);
         std::cout << i << " to " << i + increments << " percentage: " <<  (double)i/ video.getFrameCount()*100 << "% \n";
@@ -38,7 +44,7 @@ int main(int argc, char* args[])
     video.display("Wheedoo", 25);
     //save video as the video name _compressed
     std::filesystem::path where_to_save(filename);
-    where_to_save.replace_filename(where_to_save.filename().string() + "_compressed");
+    where_to_save.replace_filename(where_to_save.stem().string() + "_compressed" + where_to_save.extension().string());
    video.saveVideo(where_to_save.string());
 
 
