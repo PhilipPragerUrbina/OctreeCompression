@@ -1,6 +1,8 @@
 # Octree Video Compression
-Also can be called volume compression.
-Video compression using octrees. Similar to quadtree compression but for videos with a temporal third axis. Treats the video like a voxel volume, and compresses it like a sparse voxel octree. Just like quadtree compression, it uses color error to decide where to split.
+Video compression using octrees. Compresses video like a 3d volume. Also can be called volume compression.
+
+### How it works
+Similar to quadtree compression but for videos. It uses octrees with the third axis being temporal. It treats the video like a voxel volume, and compresses it like a sparse voxel octree. Just like quadtree compression, it uses color error to decide where to split.
 
 This compression is hardly practical, but it is a unique approach and is very fun.
 
