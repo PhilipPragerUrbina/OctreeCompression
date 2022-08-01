@@ -37,6 +37,9 @@ Default values:
 2. GPU acceleration.
 3. Combination with other compressions.
 
+### Note
+The file size of the saved mp4 video has nothing to do with the compression from this project. It is only to virw the result of the compression and is not an accurate represntation of the data saved. The program tells you the exact compression ratio when it is done. 
+
 ### Example
 4 times compression ratio.
 
